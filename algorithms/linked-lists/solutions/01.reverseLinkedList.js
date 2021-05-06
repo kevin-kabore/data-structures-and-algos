@@ -1,0 +1,79 @@
+/**
+ * Given a linked list, return it in reverse
+ */
+
+// Understand the question, write key points
+// - linked list, so we don't know the length
+// - we will be given the head property
+// - we'll have access to the next and next.next
+
+// STEP 1: Verify the constraints
+// - Q: what do we return if we receive a single node
+//      or a null node?
+// - A: return the node or null
+
+// STEP 2: Test cases. Write out some test cases
+// - Best case
+// Input: 1 -> 2 -> 3 -> 4 -> 5 -> null
+// Output: 5 -> 4 -> 3 -> 2 -> 1 -> null
+
+// - Null cases
+// Input: null
+// Output: null
+// Input: 1
+// Output: 1
+
+// STEP 3: Brute Force.
+// two pointers first and second
+// iterate while there's a next value
+    // - get next of second
+    // - swap the pointers of first and second 
+    // at each iteration (make second point to first)
+// make the head = first node 
+
+
+// STEP 4: Code the brute force
+let reverseLinkedList = function(head) {
+    // null case, single case
+    if (!head.next) {
+        return head;
+    }
+    let first = head; // f = 5
+    let second = head.next; // s = null
+    while (second) {  
+        const next = second.next // n = 5
+        second.next = first; 
+        first = second; // 
+        second = next;
+    }
+    head = first;
+    return head;
+}
+// STEP 5: Errors, check code for errors 
+
+// STEP 6: Test against cases. 
+// f = first, s = second, n = next
+// f    s    n
+// 1 -> 2 -> 3 -> 4 -> 5 
+//      f    s    n 
+// 1 <- 2    3 -> 4 -> 5 
+//           f    s    n
+// 1 <- 2 <- 3    4 -> 5
+//                f    s   n = null
+// 1 <- 2 <- 3 <- 4    5
+//                     f   s = null, n = null
+// 1 <- 2 <- 3 <- 4 <- 5
+// head = first => h = 5
+
+// STEP 7: Time and Space. Analyze time and space complexities
+// O(n) time, O(1) space
+
+// STEP 8: Optimize: can we optimize our solution? 
+// No, this is the best we can do since we have to
+// touch every node to reverse the list
+
+// STEP 9: Code the optimal solution
+
+// STEP 10: Test, time & space. 
+
+// STEP 11: Ask your interviewer if this is sufficient 
