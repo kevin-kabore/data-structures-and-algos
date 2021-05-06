@@ -3,9 +3,15 @@
  */
 
 // Understand the question, write key points
-// - linked list, so we don't know the length
 // - we will be given the head property
 // - we'll have access to the next and next.next
+// - key insight is that we'll have to make sure
+//      our solution can do the right thing repeatedly
+// - repeatedly switch the pointers in out LL
+// Input:  1 -> 2 -> 3 -> 4 -> 5 -> null
+// Output: null <- 1 <- 2 <- 3 <- 4 <- 5
+
+
 
 // STEP 1: Verify the constraints
 // - Q: what do we return if we receive a single node
@@ -38,16 +44,17 @@ let reverseLinkedList = function(head) {
     if (!head.next) {
         return head;
     }
-    let first = head; // f = 5
-    let second = head.next; // s = null
+    let first = head;
+    let second = head.next;
+    head.next = null;
     while (second) {  
-        const next = second.next // n = 5
+        const next = second.next;
         second.next = first; 
-        first = second; // 
+        first = second; 
         second = next;
     }
-    head = first;
-    return head;
+    // first is now the last value visited
+    return first;
 }
 // STEP 5: Errors, check code for errors 
 
@@ -71,9 +78,41 @@ let reverseLinkedList = function(head) {
 // STEP 8: Optimize: can we optimize our solution? 
 // No, this is the best we can do since we have to
 // touch every node to reverse the list
+// but we can clean up our approach:
+// - have a previous = null that will build up the list
+// - start current = head
+// while current
+// - next = current.next
+// - current.next = prev
+// - prev = current 
+// - current = next;
 
 // STEP 9: Code the optimal solution
+reverseLinkedList = function(head) {
+    if (!head.next) {
+        return head;
+    }
+
+    let prev = null, current = head;
+    while(current) { // p = 5 -> 4 -> 3 -> 2 -> 1 -> null, c = null
+        const next = current.next; // n = null
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+
+    return prev
+}
 
 // STEP 10: Test, time & space. 
+// input: 1 -> 2 -> 3 -> 4 -> 5 -> null
+// p = null, c = 1
+// p = 1 -> null, c = 2
+// p = 2 -> 1 -> null, c = 3
+// p = 3 -> 2 -> 1 -> null, c = 4
+// p = 4 -> 3 -> 2 -> 1 -> null, c = 5
+// p = 5 -> 4 -> 3 -> 2 -> 1 -> null, c = null
+// current is null, done. return p
+// Output: 5 -> 4 -> 3 -> 2 -> 1 -> null
 
 // STEP 11: Ask your interviewer if this is sufficient 
