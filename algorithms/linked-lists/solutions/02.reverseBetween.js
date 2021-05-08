@@ -71,14 +71,14 @@ let reverseBetween = function(head, left, right) {
         return head;
     }                             
     let currentNode = head, currentPosition = 1;
-    let before = head;
-    // get the node before, and currentNode to set new tail;
+    let before = head; // make before point to left - 1
+    // get and set node at left - 1 as before
     while (currentPosition < left) {
         before = currentNode;
         currentNode = currentNode.next; 
         currentPosition++;
     }
-    
+    // set currentNode as tail (will be the new tail of reversed list)
     let reversedList = null, tail = currentNode;
     while (currentPosition >= left && currentPosition <= right) {
         const next = currentNode.next;
@@ -88,8 +88,8 @@ let reverseBetween = function(head, left, right) {
         currentPosition++;
     } 
     
-    before.next = reversedList;
-    tail.next = currentNode; 
+    before.next = reversedList; // reversedList always head of reversed list
+    tail.next = currentNode; // currentNode = right + 1
     
     if (left > 1) {
         return head;
