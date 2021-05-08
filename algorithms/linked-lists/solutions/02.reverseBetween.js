@@ -41,25 +41,24 @@
 // STEP 3: Brute Force. 
 // have to update the pointers of values BEFORE and after left and right
 // 1. need nodes: 
-// - before = left - 1, after = right + 1
-// need:
-// - position counter, currentNode, tail
-// loop while < left to get node before
+// - currentNode = head, positionCounter, and before
+// 2. need to find:
+// - before = left - 1, will need to point reversedList to right + 1
+// - loop while < left to get node before
     // before = currentNode
     // currentNode = currentNode.next
     // currentPos++
-// tail = currentNode
-// loop while currentPos >= left && currentPos <= right
-    // reverse list 
-    // 1. get current node
-    // 2. store next value 
-    // 3. update next value to list so far
-    // 4. store current node as list so far
-    // 5. update current node to be next value of 2.
-// set before.next = list so far, tail.next = currentNode (right + 1)
-// return head, reversedList if left === 1
+// 3. Get tail = currentNode
+// 4. loop while currentPos between left and right (inclusive)
+    // reverse list:
+    // A. get current node
+    // B. store next value 
+    // C. update next value to list so far
+    // D. store current node as list so far
+    // E. update current node to be next value of 2.
+// 5. set before.next = list so far, tail.next = currentNode (right + 1)
+// 6. return head, reversedList if left === 1
 
-// steps to reverse:
 // STEP 4: Code the brute force
 /**
  * 
