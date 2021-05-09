@@ -88,13 +88,13 @@ let reverseBetween = function(head, left, right) {
         currentPosition++;
     } 
     
-    before.next = reversedList; // reversedList always head of reversed list
+    before.next = reversedList; 
     tail.next = currentNode; // currentNode = right + 1
     
     if (left > 1) {
         return head;
-    } else { // reversed the whole list
-        return reversedList;
+    } else { // edge case: reversed the whole list
+        return reversedList; // reversedList always head of reversed list
     }
 }
 
