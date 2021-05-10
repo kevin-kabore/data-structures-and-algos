@@ -19,14 +19,14 @@ output: ListNode that starts the cycle
 // 2. Test cases
 
 // 3. Brute force
-keep a set of seen nodes
-visit every node
-return the node that is already in the set
+// keep a set of seen nodes
+// visit every node
+// return the node that is already in the set
 
-time: O(N), space: O(N)
-visiting every node: O(n) time
-add and has in a set are in O(1)
-space would be O(n)
+// time: O(N), space: O(N)
+// visiting every node: O(n) time
+// add and has in a set are in O(1)
+// space would be O(n)
 // 4. code the brute force
 /**
  * accepts a list and returns a node at which 
@@ -73,11 +73,51 @@ let detectedCycle = function(head) {
 // 6. Test
 
 // 7. Space and time
+// time: O(N), space: O(N)
 
 // 8. Optimal approach
+// Fast and Slow pointer (Floyd's Tortoise and Hare algorithm)
+// we start a fast and a slow pointer at the head
+// - move slow and fast +1
+// - check if fast is or will be tail
+//     return null if tail
+// - else move fast +1 more
+// - break if they are equal, cycle detected
+// - start new pointer at head, slow at slow
+// - iterate by one until they meet
+// return new meeting point as cycle node
 
 // 9. Code the optimal solution
+let detectedCycle = function(head) {
+    if (!head || !head.next) {
+        return null;
+    }
+    let slow = head, fast = head;
+    while (true) {
+        // move slow and fast +1
+        slow = slow.next;
+        fast = fast.next; 
+        // check if fast is or will be tail
+        if (fast === null || fast.next === null) {
+            return null;
+        } else { // move fast +1 more
+            fast = fast.next;
+        }
+        // break if they are equal, cycle detected
+        if (fast === slow) break;
+    }
+    // start pointer at head
+    let p1 = head;
+    // iterate by one until they meet
+    while (p1 !== slow) {
+        p1 = p1.next;
+        slow = slow.next
+    }
+    return p1;
+}
 
 // 10. Test, space and time
+// time: O(N), slow pointer will never loop
+// space: O(1)
 
 // 11. Discuss with interviewer
