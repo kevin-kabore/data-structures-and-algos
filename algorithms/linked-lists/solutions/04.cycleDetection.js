@@ -11,8 +11,8 @@
  */
 
 // Key points
-Input: head
-output: ListNode that starts the cycle
+// Input: head
+// output: ListNode that starts the cycle
 
 // 1. Verify constraints
 
