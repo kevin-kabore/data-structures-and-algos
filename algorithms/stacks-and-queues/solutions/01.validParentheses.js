@@ -6,6 +6,7 @@
  * 1. Open brackets must be closed by the same type of brackets.
  * 2. Open brackets must be closed in the correct order.
  * 
+ * https://leetcode.com/problems/valid-parentheses
  */
 
 // Key Points:
@@ -68,7 +69,7 @@ let isValidString = function(s) {
         if (parens[char]) { 
             stack.push(char)
         } else { // must be a right bracket
-            const leftParen = stack.pop(); // '['
+            const leftParen = stack.pop();
             const correctParen = parens[leftParen];
             if (char !== correctParen) {
                 return false;
