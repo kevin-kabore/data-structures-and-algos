@@ -14,7 +14,7 @@
  * - target: Number, a number to find a sum of
  * 
  * need: 
- * - what two values add up to targer
+ * - what two values add up to target
  * - return their indeces
  * 
  * output: 
