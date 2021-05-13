@@ -5,8 +5,8 @@
  * Return the index of target, and null if it doesn't exist
  * inside the array.
  */
-
-function binarySearch(nums, left, right, target) {
+// Recursive: O(n) time, O(logn) space (recursive call stack space)
+let binarySearch = function(nums, left, right, target) {
     if (right >= left) {
         const mid = Math.floor((left + right)/2);
         
@@ -33,4 +33,26 @@ function binarySearch(nums, left, right, target) {
  // binarySearch(nums, 0, nums.length - 1, target)  // => 2
  // binarySearch(nums, target = 1, 0, nums.length -1)  // => null
  
- 
+ // Iterative: O(logn) time, O(1) space
+ let binarySearch = function(nums, target) {
+    let left = 0, right = nums.length;
+    while (right >= left) {
+        const mid = Math.floor((left + right)/2);
+        if (nums[mid] === target) {
+            return mid;
+        }
+        
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } 
+        
+        if (nums[mid] > target) {
+            right = mid -1;
+        }
+        
+    }
+    // or -1/false for not found
+    return null;
+    
+    // mid and target are equal
+}
