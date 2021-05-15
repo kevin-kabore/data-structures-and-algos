@@ -77,8 +77,11 @@ const levelOrderedClean = function(root) {
     const result = [];
     const queue = [root];
     while (queue.length) {
+        // 1. Identify level of tree
         // This while loop will keep track of our levels
         let nodesOnLevel = queue.length, nodesCounted = 0;
+        
+        // 2. Initialize our sub array when at start of level
         const valuesOnLevel = [];
         // loop until processed whole level
         while (nodesCounted < nodesOnLevel) {
@@ -90,7 +93,7 @@ const levelOrderedClean = function(root) {
             if (currentNode.right) queue.push(currentNode.right);
             nodesCounted++;
         }
-        // done with the level
+        // 3. Push our subArray to our result
         result.push(valuesOnLevel);
     }
 }
