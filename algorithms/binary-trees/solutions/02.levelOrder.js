@@ -105,8 +105,8 @@ const levelOrderedClean = function(root) {
 // 7. Space and time
 // time: O(N) where n is the number of nodes
 // space: O(N)
-// result array: O(N) 
-// queue: at most # of nodes at each level
+// - result array: O(N) 
+// - queue: at most # of nodes at each level
     // max is at last level = O(N/2)
 
 // 8. Optimize 
