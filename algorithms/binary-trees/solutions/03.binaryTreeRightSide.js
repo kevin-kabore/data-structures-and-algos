@@ -140,5 +140,9 @@ let rightSideViewDFS = function(root, result = [], currentLvl = 0) {
 }
 
 // 10. Test, space and time
+// time: O(N), worst case one node per level
+// space: O(N) worst case if tree is skewed
+// - avg case: O(h) for DFS, h = height of the tree
+
 
 // 11. Ask the interviewer if ok
