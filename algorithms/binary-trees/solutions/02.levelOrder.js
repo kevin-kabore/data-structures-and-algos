@@ -35,7 +35,7 @@
 // 3. Push our subArray to our result
 
 // how can we know when we're at the next level?
-// can keep track of the parent? If not same parent, create new array
+// nodes on each lvl = nodes in queue
 
 // 4. Code the brute force
 const levelOrdered = function(root) {
